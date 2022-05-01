@@ -8,8 +8,13 @@ const app = express();
 const port = 3000;
 
 const route = require('./routes');
+const db = require('./config/db');
 
+//Connect to public folder
 app.use(express.static(path.join(__dirname, 'public')));
+
+//connect to db
+db.connect();
 
 //middleware
 app.use(
@@ -36,5 +41,5 @@ app.set('views', path.join(__dirname, 'resources/views'));
 route(app);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`App listening on port ${port}`);
 });
