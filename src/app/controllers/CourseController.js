@@ -17,6 +17,17 @@ class CourseController {
     res.render('courses/create');
   }
 
+  //[POST] /learn/store
+  store(req, res, next) {
+    req.body.img =
+      'https://wiki.tino.org/wp-content/uploads/2021/07/word-image-1156.png';
+    const course = new Course(req.body);
+    course
+      .save()
+      .then(() => res.redirect('/me/stored/courses'))
+      .catch(next);
+  }
+
   //[GET] /learn/:id/edit
   edit(req, res, next) {
     Course.findById(req.params.id)
@@ -50,17 +61,6 @@ class CourseController {
   restore(req, res, next) {
     Course.restore({ _id: req.params.id })
       .then(() => res.redirect('back'))
-      .catch(next);
-  }
-
-  //[POST] /learn/store
-  store(req, res, next) {
-    req.body.img =
-      'https://wiki.tino.org/wp-content/uploads/2021/07/word-image-1156.png';
-    const course = new Course(req.body);
-    course
-      .save()
-      .then(() => res.redirect('/me/stored/courses'))
       .catch(next);
   }
 
