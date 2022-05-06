@@ -77,7 +77,7 @@ class CourseController {
     }
   }
 
-  //[PATCH] /courses/handle-form-action-restore
+  //[POST] /courses/handle-form-action-restore
   handleFormActions(req, res, next) {
     switch (req.body.action) {
       case 'restore':

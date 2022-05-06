@@ -156,7 +156,7 @@
 
         //check all submit button clicked
         checkAllSubmitBtn.on('submit', function (e) {
-            var isSubmittable = !$(this).prop('checked')
+            var isSubmittable = !$(this).hasClass('disabled')
             if (!isSubmittable) {
                 e.preventDefault()
             }
